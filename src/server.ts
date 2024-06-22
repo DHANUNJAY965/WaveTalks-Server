@@ -72,7 +72,7 @@ function cleanUpClient(ws: WebSocket) {
 }
 
 app.get('/',(req,res)=>{
-    res.send("<h1>WEBSOCKET SERVER IS RUNNING NOW ")
+    res.send("<h1>WaveTalks WEBSOCKET SERVER IS RUNNING NOW ")
 })
 
 app.get('/activeusers', (req, res) => {
