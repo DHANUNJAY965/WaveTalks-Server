@@ -32,7 +32,7 @@ wss.on('connection', (ws: WebSocket) => {
       } else {
         waitingClients.push(ws);
       }
-    } else if (data.type === 'answer' || data.type === 'candidate' || data.type === 'chat') {
+    } else if (data.type === 'answer' || data.type === 'candidate' || data.type === 'chat' || data.type === 'image') {
       const partner = activePairs.get(ws);
       if (partner) {
         partner.send(JSON.stringify(data));
@@ -53,6 +53,8 @@ wss.on('connection', (ws: WebSocket) => {
     if (index !== -1) {
       waitingClients.splice(index, 1);
     }
+    //Decrement active users count
+    activeUsers -= 1;
     console.log('Client disconnected');
   });
 });
@@ -65,7 +67,6 @@ function cleanUpClient(ws: WebSocket) {
     partner.close();
   }
   activePairs.delete(ws);
-  activeUsers -= 1; // Decrement active users count
   console.log('Client disconnected',activeUsers);
   ws.close();
 }
