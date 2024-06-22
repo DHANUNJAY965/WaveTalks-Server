@@ -72,7 +72,7 @@ function cleanUpClient(ws) {
     ws.close();
 }
 app.get('/', (req, res) => {
-    res.send("<h1>WaveTalks WEBSOCKET SERVER IS RUNNING NOW ");
+    res.send("<h1>WAVETALKS WEBSOCKET SERVER IS ACTIVE NOW</h");
 });
 app.get('/activeusers', (req, res) => {
     try {
